@@ -1,0 +1,5 @@
+# Flask core
+Flask>=0.12.0
+
+# Tests
+pytest>=3.0.6
