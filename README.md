@@ -7,7 +7,7 @@ that is common for most of the Flask projects
 
 After creating virtualenv and activating it install the requirements:
 
-    pip install requirements
+    pip install -r requirements.txt
 
 To start development server export an environment variable:
 
