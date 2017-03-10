@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "fields": {
+        "success": {
+            "type": "boolean"
+        },
+        "data": {
+            "type": "string"
+        }
+    },
+    "required": ["success", "data"]
+}

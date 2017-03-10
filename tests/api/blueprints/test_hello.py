@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import json
+
+from app.api.utlis.validators import validate_dict_with_schema
 
 
 def test_hello(app):
@@ -7,10 +10,15 @@ def test_hello(app):
     Given the app is up and running
     When I make a call to the API
     Then I get HTTP 200 OK response
+    And the response body match the schema
     """
     client = app.test_client()
     response = client.get("/api/hello/")
     assert response.status_code == 200
+    validate_dict_with_schema(
+        json.loads(response.data.decode("utf-8")),
+        "hello/response"
+    )
 
 
 def test_wrong_url(app):

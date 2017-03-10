@@ -6,7 +6,7 @@ from distutils.core import setup
 setup(
     name="flask-boilerplate",
     author="Jerzy Pawlikowski",
-    version="1.0",
+    version="1.0.0",
     py_modules=["app"],
     install_requires=["Flask"]
 )
