@@ -13,11 +13,11 @@ def test_hello(app):
     And the response body match the schema
     """
     client = app.test_client()
-    response = client.get("/api/hello/")
+    response = client.get("/api/example/")
     assert response.status_code == 200
     validate_dict_with_schema(
         json.loads(response.data.decode("utf-8")),
-        "hello/response"
+        "example/response"
     )
 
 
@@ -40,5 +40,5 @@ def test_wrong_method(app):
     Then I get HTTP 405 METHOD NOT ALLOWED response
     """
     client = app.test_client()
-    response = client.post("/api/hello/")
+    response = client.post("/api/example/")
     assert response.status_code == 405

@@ -5,7 +5,7 @@
             "type": "boolean"
         },
         "data": {
-            "type": "string"
+            "type": "array"
         }
     },
     "required": ["success", "data"]

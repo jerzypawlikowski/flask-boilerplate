@@ -6,7 +6,11 @@ eggs/
 .eggs/
 *.egg-info/
 *.egg
+*.log
 MANIFEST
+
+# Frontend
+node_modules
 
 # Unit test / coverage reports
 htmlcov/

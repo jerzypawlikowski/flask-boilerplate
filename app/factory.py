@@ -16,8 +16,8 @@ def register_blueprints(the_app):
     """
     Register all blueprints that needs to be served by the app
     """
-    from app.api.blueprints.hello import hello_blueprint
-    the_app.register_blueprint(hello_blueprint, url_prefix="/api/hello/")
+    from app.api.blueprints.example import example_blueprint
+    the_app.register_blueprint(example_blueprint, url_prefix="/api/example/")
     from app.frontend.blueprints.main import main_blueprint
     the_app.register_blueprint(main_blueprint, url_prefix="/")
 

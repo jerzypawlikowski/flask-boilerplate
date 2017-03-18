@@ -9,14 +9,6 @@ After creating virtualenv and activating it install the requirements:
 
     pip install -r requirements.txt
 
-To start development server export an environment variable:
+To start development run:
 
-    export FLASK_APP=manage.py
-
-And optionally:
-
-    export FLASK_DEBUG=true
-
-After that run:
-
-    flask run
+    python manage.py runserver
