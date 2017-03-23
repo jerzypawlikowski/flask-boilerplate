@@ -1,3 +1,5 @@
+'use strict';
+
 import React, { Component } from 'react';
 
 export default class App extends Component {
@@ -10,15 +12,14 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    var that = this;
-    fetch('/api/example/').then(function(response){
-      return response.json();
-    }).then(function(response_data) {
-      if(response_data.success === true) {
-        that.setState(response_data.data);
+    fetch('/api/example/').then(
+        response => response.json()
+    ).then(responseData => {
+      if(responseData.success === true) {
+        this.setState(responseData.data);
       }
     }).catch(function(err) {
-      alert("Oh dear! An error occurred!")
+      alert('Oh dear! An error occurred!')
     });
   }
 
