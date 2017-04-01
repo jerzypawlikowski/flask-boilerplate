@@ -9,6 +9,8 @@ def create_app():
     app = Flask(__name__)
     register_blueprints(app)
     configure_error_handlers(app)
+    app.template_folder = "frontend/templates"
+    app.static_folder = "frontend/static"
     return app
 
 

@@ -12,6 +12,9 @@ MANIFEST
 # Frontend
 node_modules
 
+# Config
+*.cfg
+
 # Unit test / coverage reports
 htmlcov/
 .tox/
