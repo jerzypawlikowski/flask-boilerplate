@@ -8,9 +8,6 @@ def load_schemas_from_directory(directory, schema=None):
     """
     Loads schemas from given directory and returns a dictionary
     """
-    if not os.path.isdir(directory):
-        raise ValueError("{} is not a directory".format(directory))
-
     for (directory_path, directories, files) in os.walk(directory):
         relative_path = os.path.relpath(directory_path, directory)
         current_schema = schema

@@ -1,14 +1,23 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from flask_script import Manager
+import os
 
-from app.factory import create_app
+from flask_script import Manager
+from flask_migrate import MigrateCommand, Migrate
+
+from app.factory import create_app, db
 
 app = create_app()
 
 
 def main():
+    directory = os.path.abspath(
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "migrations")
+    )
+
+    Migrate(app, db, directory=directory)
     manager = Manager(app=app)
+    manager.add_command("db", MigrateCommand)
 
     @manager.command
     def build_frontend():
@@ -32,7 +41,7 @@ def main():
             for arg in rule.arguments:
                 options[arg] = "[{0}]".format(arg)
 
-            methods = ','.join(rule.methods)
+            methods = ",".join(rule.methods)
             url = url_for(rule.endpoint, **options)
             line = urllib.parse.unquote(
                 "{:50s} {:20s} {}".format(rule.endpoint, methods, url))

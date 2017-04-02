@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 from app.api.utlis.http import json_response
+
+db = SQLAlchemy()
 
 
 def create_app():
     app = Flask(__name__)
+    app.config.from_envvar("APP_CONFIG")
+    register_extensions(app)
     register_blueprints(app)
     configure_error_handlers(app)
     app.template_folder = "frontend/templates"
@@ -14,12 +19,20 @@ def create_app():
     return app
 
 
+def register_extensions(the_app):
+    """
+    Register all extensions for the app
+    """
+    db.app = the_app
+    db.init_app(the_app)
+
+
 def register_blueprints(the_app):
     """
     Register all blueprints that needs to be served by the app
     """
-    from app.api.blueprints.example import example_blueprint
-    the_app.register_blueprint(example_blueprint, url_prefix="/api/example/")
+    from app.api.blueprints.user import user_blueprint
+    the_app.register_blueprint(user_blueprint, url_prefix="/api/users/")
     from app.frontend.blueprints.main import main_blueprint
     the_app.register_blueprint(main_blueprint, url_prefix="/")
 
