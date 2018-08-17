@@ -28,7 +28,7 @@ def test_list_success(app, db):
     And the response contains data for two users
     """
     for user in [
-        User(email="a{}@example.com".format(n), password="a") for n in range(2)
+        User(email=f"a{n}@example.com", password="a") for n in range(2)
     ]:
         user.save()
 
