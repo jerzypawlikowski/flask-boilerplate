@@ -5,7 +5,7 @@ import json
 from flask import Response
 
 
-def json_response(status=200, response_data=None):
+def json_response(status: int=200, response_data: dict=None) -> Response:
     """
     Returns HTTP response with JSON body
     """

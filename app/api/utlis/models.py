@@ -7,7 +7,7 @@ from sqlalchemy.event import listen
 from app.factory import db
 
 
-class TrackerModel(db.Model):
+class BaseModel(db.Model):
     """
     Base model with `created_at` and `updated_at` fields
     """
@@ -47,4 +47,4 @@ def set_updated_at(target, value, oldvalue):
     value.updated_at = datetime.now()
 
 
-listen(TrackerModel, "before_update", set_updated_at)
+listen(BaseModel, "before_update", set_updated_at)

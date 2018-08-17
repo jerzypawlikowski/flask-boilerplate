@@ -3,11 +3,11 @@
 import bcrypt
 from sqlalchemy.exc import SQLAlchemyError
 
-from app.api.utlis.models import TrackerModel
+from app.api.utlis.models import BaseModel
 from app.factory import db
 
 
-class User(TrackerModel):
+class User(BaseModel):
     """
     Class representing a user of the system
     """
@@ -20,7 +20,7 @@ class User(TrackerModel):
     password = db.Column(db.String(60), nullable=False)
 
     @classmethod
-    def create_hash(cls, plain_password):
+    def create_hash(cls, plain_password: str) -> str:
         """
         Hashes plain password
         """
@@ -29,7 +29,7 @@ class User(TrackerModel):
             bcrypt.gensalt()
         ).decode("utf-8")
 
-    def check_password(self, plain_password):
+    def check_password(self, plain_password: str) -> bool:
         """
         Check if the password is correct
         """
@@ -39,7 +39,7 @@ class User(TrackerModel):
         ).decode("utf-8") == self.password
 
     @staticmethod
-    def check_user(email, password):
+    def check_user(email: str, password: str) -> None:
         """
         Check if email and password matches an existing user
         """

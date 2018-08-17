@@ -8,7 +8,7 @@ from app.api.utlis.http import json_response
 db = SQLAlchemy()
 
 
-def create_app():
+def create_app() -> Flask:
     app = Flask(__name__)
     app.config.from_envvar("APP_CONFIG")
     register_extensions(app)
@@ -19,7 +19,7 @@ def create_app():
     return app
 
 
-def register_extensions(the_app):
+def register_extensions(the_app: Flask):
     """
     Register all extensions for the app
     """
@@ -27,7 +27,7 @@ def register_extensions(the_app):
     db.init_app(the_app)
 
 
-def register_blueprints(the_app):
+def register_blueprints(the_app: Flask):
     """
     Register all blueprints that needs to be served by the app
     """
@@ -37,7 +37,7 @@ def register_blueprints(the_app):
     the_app.register_blueprint(main_blueprint, url_prefix="/")
 
 
-def configure_error_handlers(the_app):
+def configure_error_handlers(the_app: Flask):
     """
     Error handling
     """
